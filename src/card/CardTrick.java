@@ -25,6 +25,10 @@ public class CardTrick {
         Random rn = new Random();
         Scanner sc = new Scanner(System.in);
         
+        /*
+         * the loop to randomly select a card from the deck of 52
+         * There will be 7 cards selected in the magicHand
+        */
         for (int i=0; i<magicHand.length; i++)
         {
             Card c = new Card();
@@ -34,18 +38,28 @@ public class CardTrick {
             
         }
         
+        
+        /*
+         * Prompting the user to enter the card value and suit value
+        */
         System.out.print("Pick a card value (1-13): ");
         int pickedValue = sc.nextInt();
         
         System.out.print("Pick a card suit (0-3): ");
         int pickedSuit = sc.nextInt();
         
+        /*
+         * Based on the choice, retriving the card
+        */
         Card pickedCard = new Card();
         pickedCard.setValue(pickedValue);
         pickedCard.setSuit(Card.SUITS[pickedSuit]);
         
         boolean isCardFound = false;
         
+        /*
+         * Checking for the card to be on of the card in the array
+        */
         for (Card card : magicHand) {
             if (card.getValue() == pickedCard.getValue() && card.getSuit().equals(pickedCard.getSuit())){
                 isCardFound = true;
@@ -53,11 +67,16 @@ public class CardTrick {
             }
         }
         
+        /*
+         * Printing out the result
+        */
         if (isCardFound) {
             System.out.println("Congratualations! Your card is in the magic hand.");
         } else {
             System.out.println("Sorry! Your card is not in the magic hand.");
         }
+        
+        System.out.println("Your card is: " + pickedCard.getValue() + pickedCard.getSuit());
     }
     
 }
